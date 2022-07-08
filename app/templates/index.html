@@ -22,57 +22,25 @@
             <a class="navbar-brand" href="#">Stock Predicition System</a>
         </nav>
         <div class="container-fluid">
-            <div class="row py-3">
-                <div class="col-md-6">
-                    <div class="card shadow-sm p-3 mb-5 bg-white rounded"">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Search for a stock</h5>
-                            <form>
-                                <div class="form-row">
-                                    <div class="col">
-                                        <input type="text" class="form-control" placeholder="Ticket Name" name="ticket" >
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control" placeholder="Number of days" name="days" >
-                                    </div>
-                                </div>
-                                <div class="form-group row my-3 text-center">
-                                    <div class="col-sm-12">
-                                        <button type="submit" class="btn btn-primary">Predict</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="card shadow-sm p-3 mb-5 bg-white rounded"">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Todays Stock for {{ticker_value}} </h5>
+            <div class="row justify-content-center col-md-12 my-auto">
+                <div class="card shadow-sm p-3 mb-5 bg-white rounded"">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Search for a stock</h5>
+                        <form action="/predict/" method="post">{% csrf_token %}
                             <div class="form-row">
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="Enter Stock Name" name="SearchTicket" value="AAPL" >
+                                    <input type="text" class="form-control" placeholder="Ticket Name" name="ticker" value="AAPL" >
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Number of days" name="days" value="5" >
                                 </div>
                             </div>
                             <div class="form-group row my-3 text-center">
                                 <div class="col-sm-12">
-                                    <button type="submit" class="btn btn-primary">Search</button>
+                                    <button class="btn btn-primary">Predict</button>
                                 </div>
                             </div>
-                            <!-- Todays Stock -->
-                            {% block content %}
-
-                                {% autoescape off %}
-                                {{ plot_div }}
-                                {% endautoescape %}
-
-                            {% endblock content %}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card shadow-sm p-3 mb-5 bg-white rounded"">
-                        <div class="card-body">
-                          This is some text within a card body.
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
