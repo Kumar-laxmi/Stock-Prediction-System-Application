@@ -10,6 +10,7 @@ import pandas as pd
 import numpy as np
 
 import yfinance as yf
+import datetime as dt
 
 from .models import Project
 
@@ -87,6 +88,19 @@ def predict(request):
     forecast_prediction = clf.predict(X_forecast)
     forecast = forecast_prediction.tolist()
 
+    # ========================================== Plotting predicted data ======================================
+
+    pred_dict = {"Date": [], "Prediction": []}
+    for i in range(0, len(forecast)):
+        pred_dict["Date"].append(dt.datetime.today() + dt.timedelta(days=i))
+        pred_dict["Prediction"].append(forecast[i])
+    
+    pred_df = pd.DataFrame(pred_dict)
+    pred_fig = go.Figure([go.Scatter(x=pred_df['Date'], y=pred_df['Prediction'])])
+    plot_div_pred = plot(pred_fig, auto_open=False, output_type='div')
+
+
+
     # ========================================== Page Render section ==========================================
 
     return render(request, "result.html", context={  'plot_div': plot_div, 
@@ -94,4 +108,5 @@ def predict(request):
                                                     'forecast': forecast,
                                                     'ticker_value':ticker_value,
                                                     'number_of_days':number_of_days,
+                                                    'plot_div_pred':plot_div_pred
                                                     })

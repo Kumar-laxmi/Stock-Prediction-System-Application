@@ -24,64 +24,65 @@
         <nav class="navbar navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Stock Predicition System</a>
         </nav>
+
         <div class="container-fluid">
+            <div class="row py-3 justify-content-center">
+                <div class="card shadow-sm p-3 mb-5 bg-white rounded"">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Search for a stock</h5>
+                        <form action="/predict/" method="post">{% csrf_token %}
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Ticket Name" name="ticker" >
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Number of days" name="days" >
+                                </div>
+                            </div>
+                            <div class="form-group row my-3 text-center">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-primary">Predict</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <div class="row py-3">
                 <div class="col-md-6">
                     <div class="card shadow-sm p-3 mb-5 bg-white rounded"">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Search for a stock</h5>
-                            <form action="/predict/" method="post">{% csrf_token %}
-                                <div class="form-row">
-                                    <div class="col">
-                                        <input type="text" class="form-control" placeholder="Ticket Name" name="ticker" >
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control" placeholder="Number of days" name="days" >
-                                    </div>
-                                </div>
-                                <div class="form-group row my-3 text-center">
-                                    <div class="col-sm-12">
-                                        <button class="btn btn-primary">Predict</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="card shadow-sm p-3 mb-5 bg-white rounded"">
-                        <div class="card-body">
                             <h5 class="card-title text-center">Todays Stock for {{ticker_value}} </h5>
                             <!-- Todays Stock -->
-                            {% block content %}
+                            {% block Past %}
 
                                 {% autoescape off %}
-                                {{ plot_div }}
+                                    {{ plot_div }}
                                 {% endautoescape %}
 
-                            {% endblock content %}
+                            {% endblock Past %}
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card shadow-sm p-3 mb-5 bg-white rounded"">
                         <div class="card-body">
-                            <div class="text-center">
-                                <strong> Prediction Accuracy ::&nbsp;&nbsp;{{ confidence }}</strong>
-                                <strong>Predictions for {{ number_of_days }} days of {{ ticker_value }} stock</strong>
-                                <ul>{% for forecast in forecast %}
-                                    <li>{{ forecast }}</li>{% endfor %}</ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card shadow-sm p-3 mb-5 bg-white rounded"">
-                        <div class="card-body">
                             <h5 class="card-title text-center">Predicted Stock for {{ticker_value}} </h5>
                             <!-- Todays Stock -->
-         
+                            {% block Future %}
+
+                                {% autoescape off %}
+                                    {{ plot_div_pred }}
+                                {% endautoescape %}
+
+                            {% endblock Future %}
+                        </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
 
         <script src="{% static 'js/scripts.js' %}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
