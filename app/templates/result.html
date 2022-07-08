@@ -12,6 +12,9 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+        <link rel="icon" href="{% static 'image/dollar-icon.png' %}">
+
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
         <title>Stock Prediction System</title>
@@ -67,6 +70,13 @@
                                 <ul>{% for forecast in forecast %}
                                     <li>{{ forecast }}</li>{% endfor %}</ul>
                             </div>
+                        </div>
+                    </div>
+                    <div class="card shadow-sm p-3 mb-5 bg-white rounded"">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Predicted Stock for {{ticker_value}} </h5>
+                            <!-- Todays Stock -->
+         
                         </div>
                     </div>
                 </div>
