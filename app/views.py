@@ -66,17 +66,22 @@ def predict(request):
 
 
     # ========================================== Machine Learning ==========================================
+    try:
+        df_ml = yf.download(tickers = ticker_value, period='3mo', interval='1h')
+    except:
+        ticker_value = 'AAPL'
+        df_ml = yf.download(tickers = ticker_value, period='3mo', interval='1m')
 
     # Fetching ticker values from Yahoo Finance API 
-    df = df[['Adj Close']]
+    df_ml = df_ml[['Adj Close']]
     forecast_out = int(number_of_days)
-    df['Prediction'] = df[['Adj Close']].shift(-forecast_out)
+    df_ml['Prediction'] = df_ml[['Adj Close']].shift(-forecast_out)
     # Splitting data for Test and Train
-    X = np.array(df.drop(['Prediction'],1))
+    X = np.array(df_ml.drop(['Prediction'],1))
     X = preprocessing.scale(X)
     X_forecast = X[-forecast_out:]
     X = X[:-forecast_out]
-    y = np.array(df['Prediction'])
+    y = np.array(df_ml['Prediction'])
     y = y[:-forecast_out]
     X_train, X_test, y_train, y_test = model_selection.train_test_split(X, y, test_size = 0.2)
     # Applying Linear Regression
@@ -97,6 +102,7 @@ def predict(request):
     
     pred_df = pd.DataFrame(pred_dict)
     pred_fig = go.Figure([go.Scatter(x=pred_df['Date'], y=pred_df['Prediction'])])
+    pred_fig.update_xaxes(rangeslider_visible=True)
     plot_div_pred = plot(pred_fig, auto_open=False, output_type='div')
 
 
