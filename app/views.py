@@ -66,6 +66,8 @@ def predict(request):
 
 
     # ========================================== Machine Learning ==========================================
+
+
     try:
         df_ml = yf.download(tickers = ticker_value, period='3mo', interval='1h')
     except:
@@ -93,7 +95,9 @@ def predict(request):
     forecast_prediction = clf.predict(X_forecast)
     forecast = forecast_prediction.tolist()
 
+
     # ========================================== Plotting predicted data ======================================
+
 
     pred_dict = {"Date": [], "Prediction": []}
     for i in range(0, len(forecast)):
@@ -108,8 +112,9 @@ def predict(request):
 
 
     # ========================================== Page Render section ==========================================
+    
 
-    return render(request, "result.html", context={  'plot_div': plot_div, 
+    return render(request, "result.html", context={ 'plot_div': plot_div, 
                                                     'confidence' : confidence,
                                                     'forecast': forecast,
                                                     'ticker_value':ticker_value,
