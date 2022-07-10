@@ -13,7 +13,7 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
-        <link rel="icon" href="{% static 'image/dollar-icon.png' %}">
+        <link rel="icon" href="{% static 'image/dollar_icon.png' %}">
 
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
@@ -30,10 +30,10 @@
                 <div class="card shadow-sm p-3 mb-5 bg-white rounded"">
                     <div class="card-body">
                         <h5 class="card-title text-center">Search for a stock</h5>
-                        <form action="/predict/" method="post">{% csrf_token %}
+                        <form action="/predict/" method="post" autocomplete="off" action="/action_page.php">{% csrf_token %}
                             <div class="form-row">
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="Ticket Name" name="ticker" >
+                                    <input type="text" class="form-control" placeholder="Ticket Name" name="ticker" id="tickerinp" >
                                 </div>
                                 <div class="col">
                                     <input type="text" class="form-control" placeholder="Number of days" name="days" >
