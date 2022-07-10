@@ -1,4 +1,4 @@
-# Stock-Prediction-System
+<img src="./app/static/image/banner.png" alt="STOCK MARKET PREDICTION">
 
 ## Abstract 
 <p> 
