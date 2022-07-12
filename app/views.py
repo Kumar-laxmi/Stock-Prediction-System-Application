@@ -1,3 +1,5 @@
+from msilib.schema import File
+from urllib import request
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -8,20 +10,61 @@ from plotly.graph_objs import Scatter
 
 import pandas as pd
 import numpy as np
+import json
 
 import yfinance as yf
 import datetime as dt
 
 from .models import Project
 
-import quandl
 from sklearn.linear_model import LinearRegression
 from sklearn import preprocessing, model_selection, svm
 
 
 # The Home page when Server loads up
 def index(request):
-    return render(request, 'index.html', {})
+    # To show recent stocks
+    df1 = yf.download(tickers = 'AAPL', period='1d', interval='1d')
+    df2 = yf.download(tickers = 'AMZN', period='1d', interval='1d')
+    df3 = yf.download(tickers = 'GOOGL', period='1d', interval='1d')
+    df4 = yf.download(tickers = 'UBER', period='1d', interval='1d')
+    df5 = yf.download(tickers = 'TSLA', period='1d', interval='1d')
+    df6 = yf.download(tickers = 'TWTR', period='1d', interval='1d')
+
+    df1.insert(0, "Ticker", "AAPL")
+    df2.insert(0, "Ticker", "AMZN")
+    df3.insert(0, "Ticker", "GOOGL")
+    df4.insert(0, "Ticker", "UBER")
+    df5.insert(0, "Ticker", "TSLA")
+    df6.insert(0, "Ticker", "TWTR")
+
+    df = pd.concat([df1, df2, df3, df4, df5, df6], axis=0)
+    df.reset_index(level=0, inplace=True)
+    df.columns = ['Date', 'Ticker', 'Open', 'High', 'Low', 'Close', 'Adj_Close', 'Volume']
+    convert_dict = {'Date': object}
+    df = df.astype(convert_dict)
+    df.drop('Date', axis=1, inplace=True)
+
+    json_records = df.reset_index().to_json(orient ='records')
+    recent_stocks = []
+    recent_stocks = json.loads(json_records)
+
+    return render(request, 'index.html', {
+        'recent_stocks': recent_stocks
+    })
+
+def chart(request):
+    return render(request, 'chart.html', {})
+
+def search(request):
+    return render(request, 'search.html', {})
+
+
+
+def temp(request):
+    return render(request, 'index_temp.html', {})
+
+
 
 
 # The Predict Function to implement Machine Learning as well as Plotting
@@ -29,9 +72,11 @@ def predict(request):
     try:
         ticker_value = request.POST.get('ticker')
         df = yf.download(tickers = ticker_value, period='1d', interval='1m')
+        print("Downloaded ticker = {} successfully".format(ticker_value))
     except:
         ticker_value = 'AAPL'
         df = yf.download(tickers = ticker_value, period='1d', interval='1m')
+        print("Downloaded ticker = AAPL successfully")  # Default ticker value is AAPL
 
     try:
         number_of_days = request.POST.get('days')
