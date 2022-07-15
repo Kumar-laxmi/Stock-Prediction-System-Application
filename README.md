@@ -12,7 +12,7 @@
 
 ### Aim
 <p> 
-  To be updates....  
+  To predict stock prices according to real-time data values fetched from API.
 </p>
 
 ### Objective
@@ -22,7 +22,7 @@
 
 ### Project Scope
 <p>
-  To be updates....  
+  The project has a wide scope, as it is not intended to a particular organization. This project is going to develop generic software, which can be applied by any businesses organization. Moreover it provides facility to its users. Also the software is going to provide a huge amount of summary data. 
 </p>
   
 ### Technology Used:
@@ -56,6 +56,12 @@
   - ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
   - ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 
-- ### Designed using:
+- #### Designed using:
   - ![AdobeXD](https://img.shields.io/badge/Adobe%20XD-470137?style=for-the-badge&logo=Adobe%20XD&logoColor=#FF61F6)
   - ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+
+
+### Disclaimer
+<p>
+This software is for educational purposes only. USE THE SOFTWARE AT YOUR OWN RISK. THE AUTHORS AND ALL AFFILIATES ASSUME NO RESPONSIBILITY FOR YOUR TRADING RESULTS. Do not risk money which you are afraid to lose. There might be bugs in the code - this software DOES NOT come with ANY warranty.
+</p>
