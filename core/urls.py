@@ -24,5 +24,6 @@ urlpatterns = [
     path('search/', search),
     path('chart/', chart),
     path('predict/', predict),
+    path('ticker/', ticker),
     path('temp/', temp),
 ]

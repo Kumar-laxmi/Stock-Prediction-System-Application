@@ -24,8 +24,9 @@
         <nav class="navbar navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Stock Predicition System</a>
         </nav>
+
         <div class="container-fluid">
-            <div class="row justify-content-center col-md-12 my-3">
+            <div class="row py-3 justify-content-center">
                 <div class="card shadow-sm p-3 mb-5 bg-white rounded"">
                     <div class="card-body">
                         <h5 class="card-title text-center">Search for a stock</h5>
@@ -47,7 +48,41 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card shadow-sm p-3 mb-5 bg-white rounded"">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Todays Stock for {{ticker_value}} </h5>
+                            <!-- Todays Stock -->
+                            {% block Past %}
+
+                                {% autoescape off %}
+                                    {{ plot_div }}
+                                {% endautoescape %}
+
+                            {% endblock Past %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card shadow-sm p-3 mb-5 bg-white rounded"">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Predicted Stock for {{ticker_value}} </h5>
+                            <!-- Todays Stock -->
+                            {% block Future %}
+
+                                {% autoescape off %}
+                                    {{ plot_div_pred }}
+                                {% endautoescape %}
+
+                            {% endblock Future %}
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
 
         <script src="{% static 'js/scripts.js' %}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
