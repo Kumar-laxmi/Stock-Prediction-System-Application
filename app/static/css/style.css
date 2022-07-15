@@ -291,30 +291,9 @@
 /* Time and Clock */
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Quicksand", sans-serif;
-}
-
-html {
-  font-size: 62.5%;
-}
-
-.container {
-  width: 100%;
-  height: 100vh;
-  background-color: #153365;
-  color: #eee;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .calendar {
-  width: 47rem;
-  height: 55rem;
+  width: 100%;
+  height: 100%;
   border-radius: 30px;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
