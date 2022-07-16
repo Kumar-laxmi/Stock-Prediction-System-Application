@@ -101,9 +101,6 @@ def index(request):
         'recent_stocks': recent_stocks
     })
 
-def chart(request):
-    return render(request, 'chart.html', {})
-
 def search(request):
     return render(request, 'search.html', {})
 
@@ -122,15 +119,15 @@ def ticker(request):
 
 
 def temp(request):
-    return render(request, 'widget.html', {})
+    return render(request, '404.html', {})
 
 
 
 
 # The Predict Function to implement Machine Learning as well as Plotting
-def predict(request):
+def predict(request, ticker_value, number_of_days):
     try:
-        ticker_value = request.POST.get('ticker')
+        # ticker_value = request.POST.get('ticker')
         df = yf.download(tickers = ticker_value, period='1d', interval='1m')
         print("Downloaded ticker = {} successfully".format(ticker_value))
     except:
@@ -139,7 +136,7 @@ def predict(request):
         print("Downloaded ticker = AAPL successfully")  # Default ticker value is AAPL
 
     try:
-        number_of_days = request.POST.get('days')
+        # number_of_days = request.POST.get('days')
         number_of_days = int(number_of_days)
     except:
         number_of_days = 1
@@ -165,7 +162,7 @@ def predict(request):
         ])
         )
     )
-
+    fig.update_layout(paper_bgcolor="#14151b", plot_bgcolor="#14151b", font_color="white")
     plot_div = plot(fig, auto_open=False, output_type='div')
 
 
@@ -212,6 +209,7 @@ def predict(request):
     pred_df = pd.DataFrame(pred_dict)
     pred_fig = go.Figure([go.Scatter(x=pred_df['Date'], y=pred_df['Prediction'])])
     pred_fig.update_xaxes(rangeslider_visible=True)
+    pred_fig.update_layout(paper_bgcolor="#14151b", plot_bgcolor="#14151b", font_color="white")
     plot_div_pred = plot(pred_fig, auto_open=False, output_type='div')
 
 
@@ -226,3 +224,6 @@ def predict(request):
                                                     'number_of_days':number_of_days,
                                                     'plot_div_pred':plot_div_pred
                                                     })
+
+def error(request):
+    return render(request, '404.html', {})

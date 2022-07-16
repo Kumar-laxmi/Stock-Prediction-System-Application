@@ -172,20 +172,29 @@
                                     <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Stock Market Predictor</h3>
                                 </a>
                             </div>
-                            <form action="/predict/" method="post" autocomplete="off" action="/action_page.php">{% csrf_token %}
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="tickerinp" placeholder="Ticker Name" name="ticker">
-                                    <label for="tickerinp">Ticker Name</label>
-                                </div>
-                                <div class="form-floating mb-4">
-                                    <input type="text" class="form-control" id="days" placeholder="Number of days" name="days">
-                                    <label for="days">Number of Days</label>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <a href="">Search Ticker Value</a>
-                                </div>
-                                <button type="submit" class="btn btn-primary py-3 w-100 mb-4" href="/search/predict">Predict</button>
-                            </form>
+                            
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="tickerinp" placeholder="Ticker Name" name="ticker" required>
+                                <label for="tickerinp">Ticker Name</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control" id="days" placeholder="Number of days" name="days" required>
+                                <label for="days">Number of Days</label>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <a href="">Search Ticker Value</a>
+                            </div>
+                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4" onclick="LoadURL()">Predict</button>
+                            <script type="text/javascript">
+                                function LoadURL() {
+                                    var ticker = document.getElementById("tickerinp").value;
+                                    var days = document.getElementById("days").value;
+                                    var server = window.location.origin;
+                                    var path = "/predict/" + ticker + "/" + days;
+                                    var url = server + path;
+                                    window.location.href = url;
+                                }
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -202,8 +211,7 @@
                         </div>
                         <div class="col-12 col-sm-6 text-center text-sm-end">
                             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a href="https://htmlcodex.com">Kumar Laxmikant</a>
-                            <br>Distributed By: <a href="https://themewagon.com" target="_blank">Kumar Laxmikant</a>
+                            Designed By <a href="https://portfolio-website-azure-eta.vercel.app/">Kumar Laxmikant</a>
                         </div>
                     </div>
                 </div>

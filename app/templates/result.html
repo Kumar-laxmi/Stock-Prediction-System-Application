@@ -61,8 +61,8 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="../" class="nav-item nav-link active"><i class="fa fa-home me-2"></i>Home</a>
-                    <a href="/search" class="nav-item nav-link"><i class="fa fa-search me-2"></i>Predict</a>
+                    <a href="../" class="nav-item nav-link"><i class="fa fa-home me-2"></i>Home</a>
+                    <a href="/search" class="nav-item nav-link active"><i class="fa fa-search me-2"></i>Predict</a>
                     <a href="/ticker" class="nav-item nav-link"><i class="fa fa-list-alt me-2"></i>Ticker Info</a>
                 </div>
             </nav>
@@ -170,7 +170,7 @@
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary text-center rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Active Stocks</h6>
+                                <h6 class="mb-0">Recent Stock price of {{ticker_value}}</h6>
                                 <a href="">Show All</a>
                             </div>
                             {% block Left_Plot %}
@@ -185,7 +185,7 @@
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary text-center rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Active Stocks</h6>
+                                <h6 class="mb-0">Predicted Stock price of {{ticker_value}} for next {{number_of_days}} days</h6>
                                 <a href="">Show All</a>
                             </div>
                             {% block Right_Plot %}
