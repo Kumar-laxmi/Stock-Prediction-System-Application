@@ -108,7 +108,16 @@ def search(request):
     return render(request, 'search.html', {})
 
 def ticker(request):
-    return render(request, 'ticker.html', {})
+    # ================================================= Load Ticker Table ================================================
+    ticker_df = pd.read_csv('app/Data/new_tickers.csv') 
+    json_ticker = ticker_df.reset_index().to_json(orient ='records')
+    ticker_list = []
+    ticker_list = json.loads(json_ticker)
+
+
+    return render(request, 'ticker.html', {
+        'ticker_list': ticker_list
+    })
 
 
 
@@ -210,10 +219,10 @@ def predict(request):
     # ========================================== Page Render section ==========================================
     
 
-    return render(request, "result_temp.html", context={ 'plot_div': plot_div, 
-                                                        'confidence' : confidence,
-                                                        'forecast': forecast,
-                                                        'ticker_value':ticker_value,
-                                                        'number_of_days':number_of_days,
-                                                        'plot_div_pred':plot_div_pred
+    return render(request, "result.html", context={ 'plot_div': plot_div, 
+                                                    'confidence' : confidence,
+                                                    'forecast': forecast,
+                                                    'ticker_value':ticker_value,
+                                                    'number_of_days':number_of_days,
+                                                    'plot_div_pred':plot_div_pred
                                                     })
