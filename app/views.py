@@ -216,7 +216,7 @@ def predict(request, ticker_value, number_of_days):
     # ========================================== Display Ticker Info ==========================================
 
     ticker = pd.read_csv('app/Data/Tickers.csv')
-    to_search = 'AAPL'
+    to_search = ticker_value
     ticker.columns = ['Symbol', 'Name', 'Last_Sale', 'Net_Change', 'Percent_Change', 'Market_Cap',
                     'Country', 'IPO_Year', 'Volume', 'Sector', 'Industry']
     for i in range(0,ticker.shape[0]):
