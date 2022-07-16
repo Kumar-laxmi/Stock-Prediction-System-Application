@@ -13,6 +13,7 @@ import json
 
 import yfinance as yf
 import datetime as dt
+import qrcode
 
 from .models import Project
 
@@ -212,6 +213,44 @@ def predict(request, ticker_value, number_of_days):
     pred_fig.update_layout(paper_bgcolor="#14151b", plot_bgcolor="#14151b", font_color="white")
     plot_div_pred = plot(pred_fig, auto_open=False, output_type='div')
 
+    # ========================================== Display Ticker Info ==========================================
+
+    ticker = pd.read_csv('app/Data/Tickers.csv')
+    to_search = 'AAPL'
+    ticker.columns = ['Symbol', 'Name', 'Last_Sale', 'Net_Change', 'Percent_Change', 'Market_Cap',
+                    'Country', 'IPO_Year', 'Volume', 'Sector', 'Industry']
+    for i in range(0,ticker.shape[0]):
+        if ticker.Symbol[i] == to_search:
+            Symbol = ticker.Symbol[i]
+            Name = ticker.Name[i]
+            Last_Sale = ticker.Last_Sale[i]
+            Net_Change = ticker.Net_Change[i]
+            Percent_Change = ticker.Percent_Change[i]
+            Market_Cap = ticker.Market_Cap[i]
+            Country = ticker.Country[i]
+            IPO_Year = ticker.IPO_Year[i]
+            Volume = ticker.Volume[i]
+            Sector = ticker.Sector[i]
+            Industry = ticker.Industry[i]
+            break
+    
+
+    # ========================================== Display QR Code =============================================
+    # Data to encode
+    data = "https://stock-prediction-system.herokuapp.com/predict/AAPL/300/"
+    
+    # Creating an instance of QRCode class
+    qr = qrcode.QRCode(version = 1,
+                    box_size = 10,
+                    border = 5)
+    
+    # Adding data to the instance 'qr'
+    qr.add_data(data)
+    
+    qr.make(fit = True)
+    img = qr.make_image(fill_color = 'white',
+                        back_color = '#14151b')
+    
 
 
     # ========================================== Page Render section ==========================================
@@ -222,8 +261,16 @@ def predict(request, ticker_value, number_of_days):
                                                     'forecast': forecast,
                                                     'ticker_value':ticker_value,
                                                     'number_of_days':number_of_days,
-                                                    'plot_div_pred':plot_div_pred
+                                                    'plot_div_pred':plot_div_pred,
+                                                    'Symbol':Symbol,
+                                                    'Name':Name,
+                                                    'Last_Sale':Last_Sale,
+                                                    'Net_Change':Net_Change,
+                                                    'Percent_Change':Percent_Change,
+                                                    'Market_Cap':Market_Cap,
+                                                    'Country':Country,
+                                                    'IPO_Year':IPO_Year,
+                                                    'Volume':Volume,
+                                                    'Sector':Sector,
+                                                    'Industry':Industry,
                                                     })
-
-def error(request):
-    return render(request, '404.html', {})
