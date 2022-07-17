@@ -233,25 +233,6 @@ def predict(request, ticker_value, number_of_days):
             Sector = ticker.Sector[i]
             Industry = ticker.Industry[i]
             break
-    
-
-    # ========================================== Display QR Code =============================================
-    # Data to encode
-    data = "https://stock-prediction-system.herokuapp.com/predict/AAPL/300/"
-    
-    # Creating an instance of QRCode class
-    qr = qrcode.QRCode(version = 1,
-                    box_size = 10,
-                    border = 5)
-    
-    # Adding data to the instance 'qr'
-    qr.add_data(data)
-    
-    qr.make(fit = True)
-    img = qr.make_image(fill_color = 'white',
-                        back_color = '#14151b')
-    
-
 
     # ========================================== Page Render section ==========================================
     

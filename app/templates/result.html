@@ -74,15 +74,13 @@
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                <a href="../../../" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control bg-dark border-0" type="search" placeholder="Search">
-                </form>
+                
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -171,6 +169,7 @@
                         <div class="bg-secondary text-center rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <h6 class="mb-0">Information</h6>
+                                <a href="https://finance.yahoo.com/quote/{{ticker_value}}?p={{ticker_value}}">Show More</a>
                             </div>
                             <div class="table-responsive">
                                 <table class="table text-start align-middle table-bordered table-hover mb-0">
@@ -242,7 +241,9 @@
                         <div class="bg-secondary text-center rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <h6 class="mb-0">Recent Stock price of {{ticker_value}}</h6>
-                                <a href="">Show All</a>
+                                <a href="https://finance.yahoo.com/quote/{{ticker_value}}/chart?p={{ticker_value}}#">
+                                    Show More
+                                </a>
                             </div>
                             {% block Left_Plot %}
 
@@ -257,7 +258,6 @@
                         <div class="bg-secondary text-center rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <h6 class="mb-0">Predicted Stock price of {{ticker_value}} for next {{number_of_days}} days</h6>
-                                <a href="">Show All</a>
                             </div>
                             {% block Right_Plot %}
 
