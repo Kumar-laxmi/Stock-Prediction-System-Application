@@ -56,14 +56,14 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
-                        <span>Admin</span>
+                        <h6 class="mb-0">Welcome</h6>
+                        <span>User</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="../../../" class="nav-item nav-link"><i class="fa fa-home me-2"></i>Home</a>
-                    <a href="/search" class="nav-item nav-link active"><i class="fa fa-search me-2"></i>Predict</a>
-                    <a href="/ticker" class="nav-item nav-link"><i class="fa fa-list-alt me-2"></i>Ticker Info</a>
+                    <a href="../../../search" class="nav-item nav-link"><i class="fa fa-search me-2"></i>Predict</a>
+                    <a href="../../../ticker" class="nav-item nav-link"><i class="fa fa-list-alt me-2"></i>Ticker Info</a>
                 </div>
             </nav>
         </div>
@@ -74,13 +74,13 @@
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-                <a href="../../../" class="navbar-brand d-flex d-lg-none me-4">
+                <a href="../" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                
+
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -161,117 +161,22 @@
             <!-- Navbar End -->
 
 
-            <!-- Start of Main Content -->
-
+            <!-- 404 Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-xl-10">
-                        <div class="bg-secondary text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Information</h6>
-                                <a href="https://finance.yahoo.com/quote/{{ticker_value}}?p={{ticker_value}}">Show More</a>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table text-start align-middle table-bordered table-hover mb-0">
-                                    <tbody>
-                                        <tr>
-                                            <td>Symbol</td>
-                                            <td>{{Symbol}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Name</td>
-                                            <td>{{Name}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Last Sale</td>
-                                            <td>{{Last_Sale}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Net Change</td>
-                                            <td>{{Net_Change}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Percent Change</td>
-                                            <td>{{Percent_Change}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Market Capital</td>
-                                            <td>{{Market_Cap}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Country</td>
-                                            <td>{{Country}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>IPO Year</td>
-                                            <td>{{IPO_Year}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Volume</td>
-                                            <td>{{Volume}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sector</td>
-                                            <td>{{Sector}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Industry</td>
-                                            <td>{{Industry}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-2">
-                        <div class="bg-secondary text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Scan the QR Code</h6>
-                            </div>
-                            <!-- QR Code here -->
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://stock-prediction-system.herokuapp.com/predict/{{ticker_value}}/{{number_of_days}}/" alt="QR CODE">
-                        </div>
+                <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+                    <div class="col-md-6 text-center p-4">
+                        <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
+                        <h1 class="display-1 fw-bold">404</h1>
+                        <h1 class="mb-4">Page Not Found</h1>
+                        <p class="mb-4">
+                            We’re sorry for inconvinience, the API Server seems to be under maintainance.
+                            Maybe go to our home page or try to use a search?
+                        </p>
+                        <a class="btn btn-primary rounded-pill py-3 px-5" href="../../../">Go Back To Home</a>
                     </div>
                 </div>
             </div>
-            
-            <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Recent Stock price of {{ticker_value}}</h6>
-                                <a href="https://finance.yahoo.com/quote/{{ticker_value}}/chart?p={{ticker_value}}#">
-                                    Show More
-                                </a>
-                            </div>
-                            {% block Left_Plot %}
-
-                                {% autoescape off %}
-                                    {{ plot_div }}
-                                {% endautoescape %}
-
-                            {% endblock Left_Plot %}
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Predicted Stock price of {{ticker_value}} for next {{number_of_days}} days</h6>
-                            </div>
-                            {% block Right_Plot %}
-
-                                {% autoescape off %}
-                                    {{ plot_div_pred }}
-                                {% endautoescape %}
-
-                            {% endblock Right_Plot %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- End of Main Content -->
+            <!-- 404 End -->
 
 
             <!-- Footer Start -->
