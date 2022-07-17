@@ -26,4 +26,3 @@ urlpatterns = [
     path('ticker/', ticker),
     path('temp/', temp),
 ]
-
