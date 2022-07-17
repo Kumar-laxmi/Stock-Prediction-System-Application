@@ -125,6 +125,7 @@ def ticker(request):
 def predict(request, ticker_value, number_of_days):
     try:
         # ticker_value = request.POST.get('ticker')
+        ticker_value = ticker_value.upper()
         df = yf.download(tickers = ticker_value, period='1d', interval='1m')
         print("Downloaded ticker = {} successfully".format(ticker_value))
     except:
