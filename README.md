@@ -35,7 +35,7 @@
   - ![BOOTSTRAP](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
   - ![DJANGO](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green)
 
-- ### Deployment:
+- #### Deployment:
   - Click to see deployement: <a href="https://stock-prediction-system.herokuapp.com/">![Heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)</a>
 - #### Machine-Learning Algorithms:
   - <a href="https://en.wikipedia.org/wiki/Linear_regression">**MULTIPLE LINEAR REGRESSION**</a>
