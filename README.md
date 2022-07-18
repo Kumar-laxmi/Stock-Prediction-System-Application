@@ -1,3 +1,9 @@
+[//]: # (
+  Hello welcome to my project :)
+  This project is already uploaded to my GitHub Account where I have deployed this project
+  You can find the project here: https://github.com/Kumar-laxmi/Stock-Prediction-System-Application
+)
+
 <img src="./app/static/image/banner.png" alt="STOCK MARKET PREDICTION">
 
 ## Introduction
