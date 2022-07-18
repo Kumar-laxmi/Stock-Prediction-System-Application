@@ -146,6 +146,8 @@
 https://user-images.githubusercontent.com/76027425/179440037-bf73c742-c463-434b-a5f9-97b83e4ddb35.mp4
 
 
+## Project Workflow:
+
 
 ## Output Screen-shots:
 The Home page of the application that displays real time data of stock prices.
