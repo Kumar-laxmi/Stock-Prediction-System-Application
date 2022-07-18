@@ -84,7 +84,7 @@
   git clone https://github.com/Kumar-laxmi/Stock-Prediction-System-Application.git
 ```
 
-***STEP 2:** Change the directory to the repository.
+**STEP 2:** Change the directory to the repository.
 ```bash
   cd Stock-Prediction-System-Application
 ```
