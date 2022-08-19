@@ -116,7 +116,7 @@
 
 **STEP 5:** Install the dependencies.
 ```bash
-  pip install -r requirement.txt
+  pip install -r requirements.txt
 ```
 
 **STEP 6:** Migrate the Django project.
