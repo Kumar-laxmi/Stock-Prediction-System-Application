@@ -17,7 +17,7 @@
 
 ## Objective
 <p>
-  The main objective of this project is to develop a web appplication that can predict stock price based on real-time data.  
+  The main objective of this project is to develop a web application that can predict stock price based on real-time data.  
 </p>
 
 ## Project Scope
