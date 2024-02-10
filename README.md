@@ -140,12 +140,6 @@
 ```
 
 
-## Walkthrough Video:
-
-
-https://user-images.githubusercontent.com/76027425/179440037-bf73c742-c463-434b-a5f9-97b83e4ddb35.mp4
-
-
 ## Output Screen-shots:
 The Home page of the application that displays real time data of stock prices.
 ![image](https://user-images.githubusercontent.com/76027425/179440522-674b6e07-31dc-422f-81e3-0e0c9c74c85a.png)
